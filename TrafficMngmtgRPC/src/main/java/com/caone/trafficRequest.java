@@ -4,20 +4,22 @@
 package com.caone;
 
 /**
- * Protobuf type {@code trafficStatus.trafficRequest}
+ * Protobuf type {@code traffic.trafficRequest}
  */
 public  final class trafficRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:trafficStatus.trafficRequest)
+    // @@protoc_insertion_point(message_implements:traffic.trafficRequest)
     trafficRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use trafficRequest.newBuilder() to construct.
   private trafficRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  trafficRequest() {
-    currentdestination_ = "";
-    desireddestination_ = "";
+  private trafficRequest() {
+    latitudeCur_ = 0;
+    longitudeCur_ = 0;
+    latitudeDes_ = 0;
+    longitudeDes_ = 0;
   }
 
   @java.lang.Override
@@ -44,16 +46,24 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            currentdestination_ = s;
+            latitudeCur_ = input.readInt32();
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 16: {
 
-            desireddestination_ = s;
+            longitudeCur_ = input.readInt32();
+            break;
+          }
+          case 24: {
+
+            latitudeDes_ = input.readInt32();
+            break;
+          }
+          case 32: {
+
+            longitudeDes_ = input.readInt32();
             break;
           }
           default: {
@@ -77,83 +87,51 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.caone.TrafficMngmtImpl.internal_static_trafficStatus_trafficRequest_descriptor;
+    return com.caone.TrafficStatusImpl.internal_static_traffic_trafficRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.caone.TrafficMngmtImpl.internal_static_trafficStatus_trafficRequest_fieldAccessorTable
+    return com.caone.TrafficStatusImpl.internal_static_traffic_trafficRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.caone.trafficRequest.class, com.caone.trafficRequest.Builder.class);
   }
 
-  public static final int CURRENTDESTINATION_FIELD_NUMBER = 1;
-  private volatile java.lang.Object currentdestination_;
+  public static final int LATITUDECUR_FIELD_NUMBER = 1;
+  private int latitudeCur_;
   /**
-   * <code>string currentdestination = 1;</code>
+   * <code>int32 latitudeCur = 1;</code>
    */
-  public  java.lang.String getCurrentdestination() {
-    java.lang.Object ref = currentdestination_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      currentdestination_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string currentdestination = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCurrentdestinationBytes() {
-    java.lang.Object ref = currentdestination_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      currentdestination_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getLatitudeCur() {
+    return latitudeCur_;
   }
 
-  public static final int DESIREDDESTINATION_FIELD_NUMBER = 2;
-  private volatile java.lang.Object desireddestination_;
+  public static final int LONGITUDECUR_FIELD_NUMBER = 2;
+  private int longitudeCur_;
   /**
-   * <code>string desireddestination = 2;</code>
+   * <code>int32 longitudeCur = 2;</code>
    */
-  public java.lang.String getDesireddestination() {
-    java.lang.Object ref = desireddestination_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      desireddestination_ = s;
-      return s;
-    }
+  public int getLongitudeCur() {
+    return longitudeCur_;
   }
+
+  public static final int LATITUDEDES_FIELD_NUMBER = 3;
+  private int latitudeDes_;
   /**
-   * <code>string desireddestination = 2;</code>
+   * <code>int32 latitudeDes = 3;</code>
    */
-  public com.google.protobuf.ByteString
-      getDesireddestinationBytes() {
-    java.lang.Object ref = desireddestination_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      desireddestination_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getLatitudeDes() {
+    return latitudeDes_;
+  }
+
+  public static final int LONGITUDEDES_FIELD_NUMBER = 4;
+  private int longitudeDes_;
+  /**
+   * <code>int32 longitudeDes = 4;</code>
+   */
+  public int getLongitudeDes() {
+    return longitudeDes_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -170,11 +148,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getCurrentdestinationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, currentdestination_);
+    if (latitudeCur_ != 0) {
+      output.writeInt32(1, latitudeCur_);
     }
-    if (!getDesireddestinationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, desireddestination_);
+    if (longitudeCur_ != 0) {
+      output.writeInt32(2, longitudeCur_);
+    }
+    if (latitudeDes_ != 0) {
+      output.writeInt32(3, latitudeDes_);
+    }
+    if (longitudeDes_ != 0) {
+      output.writeInt32(4, longitudeDes_);
     }
     unknownFields.writeTo(output);
   }
@@ -185,11 +169,21 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getCurrentdestinationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, currentdestination_);
+    if (latitudeCur_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, latitudeCur_);
     }
-    if (!getDesireddestinationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, desireddestination_);
+    if (longitudeCur_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, longitudeCur_);
+    }
+    if (latitudeDes_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, latitudeDes_);
+    }
+    if (longitudeDes_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, longitudeDes_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -207,10 +201,14 @@ private static final long serialVersionUID = 0L;
     com.caone.trafficRequest other = (com.caone.trafficRequest) obj;
 
     boolean result = true;
-    result = result && getCurrentdestination()
-        .equals(other.getCurrentdestination());
-    result = result && getDesireddestination()
-        .equals(other.getDesireddestination());
+    result = result && (getLatitudeCur()
+        == other.getLatitudeCur());
+    result = result && (getLongitudeCur()
+        == other.getLongitudeCur());
+    result = result && (getLatitudeDes()
+        == other.getLatitudeDes());
+    result = result && (getLongitudeDes()
+        == other.getLongitudeDes());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -222,10 +220,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CURRENTDESTINATION_FIELD_NUMBER;
-    hash = (53 * hash) + getCurrentdestination().hashCode();
-    hash = (37 * hash) + DESIREDDESTINATION_FIELD_NUMBER;
-    hash = (53 * hash) + getDesireddestination().hashCode();
+    hash = (37 * hash) + LATITUDECUR_FIELD_NUMBER;
+    hash = (53 * hash) + getLatitudeCur();
+    hash = (37 * hash) + LONGITUDECUR_FIELD_NUMBER;
+    hash = (53 * hash) + getLongitudeCur();
+    hash = (37 * hash) + LATITUDEDES_FIELD_NUMBER;
+    hash = (53 * hash) + getLatitudeDes();
+    hash = (37 * hash) + LONGITUDEDES_FIELD_NUMBER;
+    hash = (53 * hash) + getLongitudeDes();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -322,21 +324,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code trafficStatus.trafficRequest}
+   * Protobuf type {@code traffic.trafficRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:trafficStatus.trafficRequest)
+      // @@protoc_insertion_point(builder_implements:traffic.trafficRequest)
       com.caone.trafficRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.caone.TrafficMngmtImpl.internal_static_trafficStatus_trafficRequest_descriptor;
+      return com.caone.TrafficStatusImpl.internal_static_traffic_trafficRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.caone.TrafficMngmtImpl.internal_static_trafficStatus_trafficRequest_fieldAccessorTable
+      return com.caone.TrafficStatusImpl.internal_static_traffic_trafficRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.caone.trafficRequest.class, com.caone.trafficRequest.Builder.class);
     }
@@ -359,9 +361,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      currentdestination_ = "";
+      latitudeCur_ = 0;
 
-      desireddestination_ = "";
+      longitudeCur_ = 0;
+
+      latitudeDes_ = 0;
+
+      longitudeDes_ = 0;
 
       return this;
     }
@@ -369,7 +375,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.caone.TrafficMngmtImpl.internal_static_trafficStatus_trafficRequest_descriptor;
+      return com.caone.TrafficStatusImpl.internal_static_traffic_trafficRequest_descriptor;
     }
 
     @java.lang.Override
@@ -389,8 +395,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.caone.trafficRequest buildPartial() {
       com.caone.trafficRequest result = new com.caone.trafficRequest(this);
-      result.currentdestination_ = currentdestination_;
-      result.desireddestination_ = desireddestination_;
+      result.latitudeCur_ = latitudeCur_;
+      result.longitudeCur_ = longitudeCur_;
+      result.latitudeDes_ = latitudeDes_;
+      result.longitudeDes_ = longitudeDes_;
       onBuilt();
       return result;
     }
@@ -439,13 +447,17 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.caone.trafficRequest other) {
       if (other == com.caone.trafficRequest.getDefaultInstance()) return this;
-      if (!other.getCurrentdestination().isEmpty()) {
-        currentdestination_ = other.currentdestination_;
-        onChanged();
+      if (other.getLatitudeCur() != 0) {
+        setLatitudeCur(other.getLatitudeCur());
       }
-      if (!other.getDesireddestination().isEmpty()) {
-        desireddestination_ = other.desireddestination_;
-        onChanged();
+      if (other.getLongitudeCur() != 0) {
+        setLongitudeCur(other.getLongitudeCur());
+      }
+      if (other.getLatitudeDes() != 0) {
+        setLatitudeDes(other.getLatitudeDes());
+      }
+      if (other.getLongitudeDes() != 0) {
+        setLongitudeDes(other.getLongitudeDes());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -476,140 +488,106 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object currentdestination_ = "";
+    private int latitudeCur_ ;
     /**
-     * <code>string currentdestination = 1;</code>
+     * <code>int32 latitudeCur = 1;</code>
      */
-    public java.lang.String getCurrentdestination() {
-      java.lang.Object ref = currentdestination_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        currentdestination_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getLatitudeCur() {
+      return latitudeCur_;
     }
     /**
-     * <code>string currentdestination = 1;</code>
+     * <code>int32 latitudeCur = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getCurrentdestinationBytes() {
-      java.lang.Object ref = currentdestination_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        currentdestination_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string currentdestination = 1;</code>
-     */
-    public Builder setCurrentdestination(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      currentdestination_ = value;
+    public Builder setLatitudeCur(int value) {
+      
+      latitudeCur_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string currentdestination = 1;</code>
+     * <code>int32 latitudeCur = 1;</code>
      */
-    public Builder clearCurrentdestination() {
+    public Builder clearLatitudeCur() {
       
-      currentdestination_ = getDefaultInstance().getCurrentdestination();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string currentdestination = 1;</code>
-     */
-    public Builder setCurrentdestinationBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      currentdestination_ = value;
+      latitudeCur_ = 0;
       onChanged();
       return this;
     }
 
-    private java.lang.Object desireddestination_ = "";
+    private int longitudeCur_ ;
     /**
-     * <code>string desireddestination = 2;</code>
+     * <code>int32 longitudeCur = 2;</code>
      */
-    public java.lang.String getDesireddestination() {
-      java.lang.Object ref = desireddestination_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        desireddestination_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getLongitudeCur() {
+      return longitudeCur_;
     }
     /**
-     * <code>string desireddestination = 2;</code>
+     * <code>int32 longitudeCur = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getDesireddestinationBytes() {
-      java.lang.Object ref = desireddestination_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        desireddestination_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string desireddestination = 2;</code>
-     */
-    public Builder setDesireddestination(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      desireddestination_ = value;
+    public Builder setLongitudeCur(int value) {
+      
+      longitudeCur_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string desireddestination = 2;</code>
+     * <code>int32 longitudeCur = 2;</code>
      */
-    public Builder clearDesireddestination() {
+    public Builder clearLongitudeCur() {
       
-      desireddestination_ = getDefaultInstance().getDesireddestination();
+      longitudeCur_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int latitudeDes_ ;
+    /**
+     * <code>int32 latitudeDes = 3;</code>
+     */
+    public int getLatitudeDes() {
+      return latitudeDes_;
+    }
+    /**
+     * <code>int32 latitudeDes = 3;</code>
+     */
+    public Builder setLatitudeDes(int value) {
+      
+      latitudeDes_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string desireddestination = 2;</code>
+     * <code>int32 latitudeDes = 3;</code>
      */
-    public Builder setDesireddestinationBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+    public Builder clearLatitudeDes() {
       
-      desireddestination_ = value;
+      latitudeDes_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int longitudeDes_ ;
+    /**
+     * <code>int32 longitudeDes = 4;</code>
+     */
+    public int getLongitudeDes() {
+      return longitudeDes_;
+    }
+    /**
+     * <code>int32 longitudeDes = 4;</code>
+     */
+    public Builder setLongitudeDes(int value) {
+      
+      longitudeDes_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 longitudeDes = 4;</code>
+     */
+    public Builder clearLongitudeDes() {
+      
+      longitudeDes_ = 0;
       onChanged();
       return this;
     }
@@ -626,10 +604,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:trafficStatus.trafficRequest)
+    // @@protoc_insertion_point(builder_scope:traffic.trafficRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:trafficStatus.trafficRequest)
+  // @@protoc_insertion_point(class_scope:traffic.trafficRequest)
   private static final com.caone.trafficRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new com.caone.trafficRequest();

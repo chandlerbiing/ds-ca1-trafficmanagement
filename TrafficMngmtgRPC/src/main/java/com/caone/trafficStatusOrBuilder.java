@@ -4,7 +4,7 @@
 package com.caone;
 
 public interface trafficStatusOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:trafficStatus.trafficStatus)
+    // @@protoc_insertion_point(interface_extends:traffic.trafficStatus)
     com.google.protobuf.MessageOrBuilder {
 
   /**

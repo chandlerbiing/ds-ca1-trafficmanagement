@@ -4,19 +4,23 @@
 package com.caone;
 
 /**
- * Protobuf type {@code traffic.trafficStatus}
+ * Protobuf type {@code traffic.futureTrafficRequest}
  */
-public  final class trafficStatus extends
+public  final class futureTrafficRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:traffic.trafficStatus)
-    trafficStatusOrBuilder {
+    // @@protoc_insertion_point(message_implements:traffic.futureTrafficRequest)
+    futureTrafficRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use trafficStatus.newBuilder() to construct.
-  private trafficStatus(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use futureTrafficRequest.newBuilder() to construct.
+  private futureTrafficRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private trafficStatus() {
-    message_ = "";
+  private futureTrafficRequest() {
+    latitudeCur_ = 0;
+    longitudeCur_ = 0;
+    latitudeDes_ = 0;
+    longitudeDes_ = 0;
+    departureTime_ = "";
   }
 
   @java.lang.Override
@@ -24,7 +28,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private trafficStatus(
+  private futureTrafficRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -43,10 +47,30 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
+
+            latitudeCur_ = input.readInt32();
+            break;
+          }
+          case 16: {
+
+            longitudeCur_ = input.readInt32();
+            break;
+          }
+          case 24: {
+
+            latitudeDes_ = input.readInt32();
+            break;
+          }
+          case 32: {
+
+            longitudeDes_ = input.readInt32();
+            break;
+          }
+          case 42: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            message_ = s;
+            departureTime_ = s;
             break;
           }
           default: {
@@ -70,45 +94,81 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.caone.TrafficStatusImpl.internal_static_traffic_trafficStatus_descriptor;
+    return com.caone.TrafficStatusImpl.internal_static_traffic_futureTrafficRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.caone.TrafficStatusImpl.internal_static_traffic_trafficStatus_fieldAccessorTable
+    return com.caone.TrafficStatusImpl.internal_static_traffic_futureTrafficRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.caone.trafficStatus.class, com.caone.trafficStatus.Builder.class);
+            com.caone.futureTrafficRequest.class, com.caone.futureTrafficRequest.Builder.class);
   }
 
-  public static final int MESSAGE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object message_;
+  public static final int LATITUDECUR_FIELD_NUMBER = 1;
+  private int latitudeCur_;
   /**
-   * <code>string message = 1;</code>
+   * <code>int32 latitudeCur = 1;</code>
    */
-  public java.lang.String getMessage() {
-    java.lang.Object ref = message_;
+  public int getLatitudeCur() {
+    return latitudeCur_;
+  }
+
+  public static final int LONGITUDECUR_FIELD_NUMBER = 2;
+  private int longitudeCur_;
+  /**
+   * <code>int32 longitudeCur = 2;</code>
+   */
+  public int getLongitudeCur() {
+    return longitudeCur_;
+  }
+
+  public static final int LATITUDEDES_FIELD_NUMBER = 3;
+  private int latitudeDes_;
+  /**
+   * <code>int32 latitudeDes = 3;</code>
+   */
+  public int getLatitudeDes() {
+    return latitudeDes_;
+  }
+
+  public static final int LONGITUDEDES_FIELD_NUMBER = 4;
+  private int longitudeDes_;
+  /**
+   * <code>int32 longitudeDes = 4;</code>
+   */
+  public int getLongitudeDes() {
+    return longitudeDes_;
+  }
+
+  public static final int DEPARTURETIME_FIELD_NUMBER = 5;
+  private volatile java.lang.Object departureTime_;
+  /**
+   * <code>string departureTime = 5;</code>
+   */
+  public java.lang.String getDepartureTime() {
+    java.lang.Object ref = departureTime_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      message_ = s;
+      departureTime_ = s;
       return s;
     }
   }
   /**
-   * <code>string message = 1;</code>
+   * <code>string departureTime = 5;</code>
    */
   public com.google.protobuf.ByteString
-      getMessageBytes() {
-    java.lang.Object ref = message_;
+      getDepartureTimeBytes() {
+    java.lang.Object ref = departureTime_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      message_ = b;
+      departureTime_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -129,8 +189,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getMessageBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+    if (latitudeCur_ != 0) {
+      output.writeInt32(1, latitudeCur_);
+    }
+    if (longitudeCur_ != 0) {
+      output.writeInt32(2, longitudeCur_);
+    }
+    if (latitudeDes_ != 0) {
+      output.writeInt32(3, latitudeDes_);
+    }
+    if (longitudeDes_ != 0) {
+      output.writeInt32(4, longitudeDes_);
+    }
+    if (!getDepartureTimeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, departureTime_);
     }
     unknownFields.writeTo(output);
   }
@@ -141,8 +213,24 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getMessageBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+    if (latitudeCur_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, latitudeCur_);
+    }
+    if (longitudeCur_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, longitudeCur_);
+    }
+    if (latitudeDes_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, latitudeDes_);
+    }
+    if (longitudeDes_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, longitudeDes_);
+    }
+    if (!getDepartureTimeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, departureTime_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -154,14 +242,22 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.caone.trafficStatus)) {
+    if (!(obj instanceof com.caone.futureTrafficRequest)) {
       return super.equals(obj);
     }
-    com.caone.trafficStatus other = (com.caone.trafficStatus) obj;
+    com.caone.futureTrafficRequest other = (com.caone.futureTrafficRequest) obj;
 
     boolean result = true;
-    result = result && getMessage()
-        .equals(other.getMessage());
+    result = result && (getLatitudeCur()
+        == other.getLatitudeCur());
+    result = result && (getLongitudeCur()
+        == other.getLongitudeCur());
+    result = result && (getLatitudeDes()
+        == other.getLatitudeDes());
+    result = result && (getLongitudeDes()
+        == other.getLongitudeDes());
+    result = result && getDepartureTime()
+        .equals(other.getDepartureTime());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -173,76 +269,84 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
+    hash = (37 * hash) + LATITUDECUR_FIELD_NUMBER;
+    hash = (53 * hash) + getLatitudeCur();
+    hash = (37 * hash) + LONGITUDECUR_FIELD_NUMBER;
+    hash = (53 * hash) + getLongitudeCur();
+    hash = (37 * hash) + LATITUDEDES_FIELD_NUMBER;
+    hash = (53 * hash) + getLatitudeDes();
+    hash = (37 * hash) + LONGITUDEDES_FIELD_NUMBER;
+    hash = (53 * hash) + getLongitudeDes();
+    hash = (37 * hash) + DEPARTURETIME_FIELD_NUMBER;
+    hash = (53 * hash) + getDepartureTime().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.caone.trafficStatus parseFrom(byte[] data)
+  public static com.caone.futureTrafficRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.caone.trafficStatus parseFrom(java.io.InputStream input)
+  public static com.caone.futureTrafficRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.caone.trafficStatus parseDelimitedFrom(java.io.InputStream input)
+  public static com.caone.futureTrafficRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.caone.trafficStatus parseDelimitedFrom(
+  public static com.caone.futureTrafficRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.caone.trafficStatus parseFrom(
+  public static com.caone.futureTrafficRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -255,7 +359,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.caone.trafficStatus prototype) {
+  public static Builder newBuilder(com.caone.futureTrafficRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -271,26 +375,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code traffic.trafficStatus}
+   * Protobuf type {@code traffic.futureTrafficRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:traffic.trafficStatus)
-      com.caone.trafficStatusOrBuilder {
+      // @@protoc_insertion_point(builder_implements:traffic.futureTrafficRequest)
+      com.caone.futureTrafficRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.caone.TrafficStatusImpl.internal_static_traffic_trafficStatus_descriptor;
+      return com.caone.TrafficStatusImpl.internal_static_traffic_futureTrafficRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.caone.TrafficStatusImpl.internal_static_traffic_trafficStatus_fieldAccessorTable
+      return com.caone.TrafficStatusImpl.internal_static_traffic_futureTrafficRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.caone.trafficStatus.class, com.caone.trafficStatus.Builder.class);
+              com.caone.futureTrafficRequest.class, com.caone.futureTrafficRequest.Builder.class);
     }
 
-    // Construct using com.caone.trafficStatus.newBuilder()
+    // Construct using com.caone.futureTrafficRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -308,7 +412,15 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      message_ = "";
+      latitudeCur_ = 0;
+
+      longitudeCur_ = 0;
+
+      latitudeDes_ = 0;
+
+      longitudeDes_ = 0;
+
+      departureTime_ = "";
 
       return this;
     }
@@ -316,17 +428,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.caone.TrafficStatusImpl.internal_static_traffic_trafficStatus_descriptor;
+      return com.caone.TrafficStatusImpl.internal_static_traffic_futureTrafficRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.caone.trafficStatus getDefaultInstanceForType() {
-      return com.caone.trafficStatus.getDefaultInstance();
+    public com.caone.futureTrafficRequest getDefaultInstanceForType() {
+      return com.caone.futureTrafficRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.caone.trafficStatus build() {
-      com.caone.trafficStatus result = buildPartial();
+    public com.caone.futureTrafficRequest build() {
+      com.caone.futureTrafficRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -334,9 +446,13 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.caone.trafficStatus buildPartial() {
-      com.caone.trafficStatus result = new com.caone.trafficStatus(this);
-      result.message_ = message_;
+    public com.caone.futureTrafficRequest buildPartial() {
+      com.caone.futureTrafficRequest result = new com.caone.futureTrafficRequest(this);
+      result.latitudeCur_ = latitudeCur_;
+      result.longitudeCur_ = longitudeCur_;
+      result.latitudeDes_ = latitudeDes_;
+      result.longitudeDes_ = longitudeDes_;
+      result.departureTime_ = departureTime_;
       onBuilt();
       return result;
     }
@@ -375,18 +491,30 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.caone.trafficStatus) {
-        return mergeFrom((com.caone.trafficStatus)other);
+      if (other instanceof com.caone.futureTrafficRequest) {
+        return mergeFrom((com.caone.futureTrafficRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.caone.trafficStatus other) {
-      if (other == com.caone.trafficStatus.getDefaultInstance()) return this;
-      if (!other.getMessage().isEmpty()) {
-        message_ = other.message_;
+    public Builder mergeFrom(com.caone.futureTrafficRequest other) {
+      if (other == com.caone.futureTrafficRequest.getDefaultInstance()) return this;
+      if (other.getLatitudeCur() != 0) {
+        setLatitudeCur(other.getLatitudeCur());
+      }
+      if (other.getLongitudeCur() != 0) {
+        setLongitudeCur(other.getLongitudeCur());
+      }
+      if (other.getLatitudeDes() != 0) {
+        setLatitudeDes(other.getLatitudeDes());
+      }
+      if (other.getLongitudeDes() != 0) {
+        setLongitudeDes(other.getLongitudeDes());
+      }
+      if (!other.getDepartureTime().isEmpty()) {
+        departureTime_ = other.departureTime_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -404,11 +532,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.caone.trafficStatus parsedMessage = null;
+      com.caone.futureTrafficRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.caone.trafficStatus) e.getUnfinishedMessage();
+        parsedMessage = (com.caone.futureTrafficRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -418,71 +546,175 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object message_ = "";
+    private int latitudeCur_ ;
     /**
-     * <code>string message = 1;</code>
+     * <code>int32 latitudeCur = 1;</code>
      */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
+    public int getLatitudeCur() {
+      return latitudeCur_;
+    }
+    /**
+     * <code>int32 latitudeCur = 1;</code>
+     */
+    public Builder setLatitudeCur(int value) {
+      
+      latitudeCur_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 latitudeCur = 1;</code>
+     */
+    public Builder clearLatitudeCur() {
+      
+      latitudeCur_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int longitudeCur_ ;
+    /**
+     * <code>int32 longitudeCur = 2;</code>
+     */
+    public int getLongitudeCur() {
+      return longitudeCur_;
+    }
+    /**
+     * <code>int32 longitudeCur = 2;</code>
+     */
+    public Builder setLongitudeCur(int value) {
+      
+      longitudeCur_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 longitudeCur = 2;</code>
+     */
+    public Builder clearLongitudeCur() {
+      
+      longitudeCur_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int latitudeDes_ ;
+    /**
+     * <code>int32 latitudeDes = 3;</code>
+     */
+    public int getLatitudeDes() {
+      return latitudeDes_;
+    }
+    /**
+     * <code>int32 latitudeDes = 3;</code>
+     */
+    public Builder setLatitudeDes(int value) {
+      
+      latitudeDes_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 latitudeDes = 3;</code>
+     */
+    public Builder clearLatitudeDes() {
+      
+      latitudeDes_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int longitudeDes_ ;
+    /**
+     * <code>int32 longitudeDes = 4;</code>
+     */
+    public int getLongitudeDes() {
+      return longitudeDes_;
+    }
+    /**
+     * <code>int32 longitudeDes = 4;</code>
+     */
+    public Builder setLongitudeDes(int value) {
+      
+      longitudeDes_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 longitudeDes = 4;</code>
+     */
+    public Builder clearLongitudeDes() {
+      
+      longitudeDes_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object departureTime_ = "";
+    /**
+     * <code>string departureTime = 5;</code>
+     */
+    public java.lang.String getDepartureTime() {
+      java.lang.Object ref = departureTime_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        message_ = s;
+        departureTime_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string departureTime = 5;</code>
      */
     public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
+        getDepartureTimeBytes() {
+      java.lang.Object ref = departureTime_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        message_ = b;
+        departureTime_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string departureTime = 5;</code>
      */
-    public Builder setMessage(
+    public Builder setDepartureTime(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      message_ = value;
+      departureTime_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string departureTime = 5;</code>
      */
-    public Builder clearMessage() {
+    public Builder clearDepartureTime() {
       
-      message_ = getDefaultInstance().getMessage();
+      departureTime_ = getDefaultInstance().getDepartureTime();
       onChanged();
       return this;
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string departureTime = 5;</code>
      */
-    public Builder setMessageBytes(
+    public Builder setDepartureTimeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      message_ = value;
+      departureTime_ = value;
       onChanged();
       return this;
     }
@@ -499,41 +731,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:traffic.trafficStatus)
+    // @@protoc_insertion_point(builder_scope:traffic.futureTrafficRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:traffic.trafficStatus)
-  private static final com.caone.trafficStatus DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:traffic.futureTrafficRequest)
+  private static final com.caone.futureTrafficRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.caone.trafficStatus();
+    DEFAULT_INSTANCE = new com.caone.futureTrafficRequest();
   }
 
-  public static com.caone.trafficStatus getDefaultInstance() {
+  public static com.caone.futureTrafficRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<trafficStatus>
-      PARSER = new com.google.protobuf.AbstractParser<trafficStatus>() {
+  private static final com.google.protobuf.Parser<futureTrafficRequest>
+      PARSER = new com.google.protobuf.AbstractParser<futureTrafficRequest>() {
     @java.lang.Override
-    public trafficStatus parsePartialFrom(
+    public futureTrafficRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new trafficStatus(input, extensionRegistry);
+      return new futureTrafficRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<trafficStatus> parser() {
+  public static com.google.protobuf.Parser<futureTrafficRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<trafficStatus> getParserForType() {
+  public com.google.protobuf.Parser<futureTrafficRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.caone.trafficStatus getDefaultInstanceForType() {
+  public com.caone.futureTrafficRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

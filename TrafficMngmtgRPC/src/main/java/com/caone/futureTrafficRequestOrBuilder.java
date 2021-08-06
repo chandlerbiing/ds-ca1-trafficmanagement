@@ -3,8 +3,8 @@
 
 package com.caone;
 
-public interface trafficRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:traffic.trafficRequest)
+public interface futureTrafficRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:traffic.futureTrafficRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -26,4 +26,14 @@ public interface trafficRequestOrBuilder extends
    * <code>int32 longitudeDes = 4;</code>
    */
   int getLongitudeDes();
+
+  /**
+   * <code>string departureTime = 5;</code>
+   */
+  java.lang.String getDepartureTime();
+  /**
+   * <code>string departureTime = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getDepartureTimeBytes();
 }

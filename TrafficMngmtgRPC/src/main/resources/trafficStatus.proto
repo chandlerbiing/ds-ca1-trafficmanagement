@@ -2,11 +2,11 @@ syntax ="proto3";
 
 option java_multiple_files = true;
 option java_package = "com.caone";
-option java_outer_classname = "TrafficMngmtImpl";
+option java_outer_classname = "TrafficStatusImpl";
 
 
 
-package trafficStatus;
+package traffic;
 
 //Service Definition
 
@@ -17,18 +17,6 @@ service CurrentStatus {
  rpc currentStatus (trafficRequest) returns (trafficStatus){}
 
  rpc  futureStatus (stream futureTrafficRequest) returns (stream forecastTrafficStatus){}
-
-}
-
-service DynamicTrafficControl {
-
-
- rpc liveUpdate(currentLocation) returns (stream trafficUpdate) {}
-
-
-  rpc userOps (stream registration) returns (registrationStatus) {}
-
-
 
 }
 
@@ -48,7 +36,7 @@ message futureTrafficRequest {
   int32 longitudeCur = 2;
   int32 latitudeDes = 3;
   int32 longitudeDes= 4;
-  long  departureTime  = 5;
+  string  departureTime = 5;
 }
 
 message trafficStatus {
@@ -65,30 +53,3 @@ string name = 1;
 
 }
 
-message currentLocation {
-
- int32 latitudeCur = 1;
- int32 longitudeCur = 2;
-
-}
-
-message trafficUpdate {
-
-string update = 1;
-
-} 
-
-message registration {
-
-string userName = 1;
-
-string email = 2;
-
-}
-
-
-message registrationStatus {
-
-string status = 1;
-
-}
