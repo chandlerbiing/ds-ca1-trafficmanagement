@@ -8,32 +8,27 @@ public interface futureTrafficRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 latitudeCur = 1;</code>
+   * <code>double latitudeCur = 1;</code>
    */
-  int getLatitudeCur();
+  double getLatitudeCur();
 
   /**
-   * <code>int32 longitudeCur = 2;</code>
+   * <code>double longitudeCur = 2;</code>
    */
-  int getLongitudeCur();
+  double getLongitudeCur();
 
   /**
-   * <code>int32 latitudeDes = 3;</code>
+   * <code>double latitudeDes = 3;</code>
    */
-  int getLatitudeDes();
+  double getLatitudeDes();
 
   /**
-   * <code>int32 longitudeDes = 4;</code>
+   * <code>double longitudeDes = 4;</code>
    */
-  int getLongitudeDes();
+  double getLongitudeDes();
 
   /**
-   * <code>string departureTime = 5;</code>
+   * <code>double departureTime = 5;</code>
    */
-  java.lang.String getDepartureTime();
-  /**
-   * <code>string departureTime = 5;</code>
-   */
-  com.google.protobuf.ByteString
-      getDepartureTimeBytes();
+  double getDepartureTime();
 }

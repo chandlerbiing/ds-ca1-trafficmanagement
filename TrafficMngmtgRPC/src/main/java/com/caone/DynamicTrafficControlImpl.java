@@ -44,8 +44,8 @@ public final class DynamicTrafficControlImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\033dynamicTrafficControl.proto\022\007dynamic\"<" +
-      "\n\017currentLocation\022\023\n\013latitudeCur\030\001 \001(\005\022\024" +
-      "\n\014longitudeCur\030\002 \001(\005\"\037\n\rtrafficUpdate\022\016\n" +
+      "\n\017currentLocation\022\023\n\013latitudeCur\030\001 \001(\001\022\024" +
+      "\n\014longitudeCur\030\002 \001(\001\"\037\n\rtrafficUpdate\022\016\n" +
       "\006update\030\001 \001(\t\"/\n\014registration\022\020\n\010userNam" +
       "e\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\"$\n\022registrationSt" +
       "atus\022\016\n\006status\030\001 \001(\t2\236\001\n\025DynamicTrafficC" +

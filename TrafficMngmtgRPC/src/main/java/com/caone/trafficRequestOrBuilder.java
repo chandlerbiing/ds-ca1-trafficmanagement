@@ -8,22 +8,22 @@ public interface trafficRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 latitudeCur = 1;</code>
+   * <code>double latitudeCur = 1;</code>
    */
-  int getLatitudeCur();
+  double getLatitudeCur();
 
   /**
-   * <code>int32 longitudeCur = 2;</code>
+   * <code>double longitudeCur = 2;</code>
    */
-  int getLongitudeCur();
+  double getLongitudeCur();
 
   /**
-   * <code>int32 latitudeDes = 3;</code>
+   * <code>double latitudeDes = 3;</code>
    */
-  int getLatitudeDes();
+  double getLatitudeDes();
 
   /**
-   * <code>int32 longitudeDes = 4;</code>
+   * <code>double longitudeDes = 4;</code>
    */
-  int getLongitudeDes();
+  double getLongitudeDes();
 }

@@ -16,11 +16,11 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private futureTrafficRequest() {
-    latitudeCur_ = 0;
-    longitudeCur_ = 0;
-    latitudeDes_ = 0;
-    longitudeDes_ = 0;
-    departureTime_ = "";
+    latitudeCur_ = 0D;
+    longitudeCur_ = 0D;
+    latitudeDes_ = 0D;
+    longitudeDes_ = 0D;
+    departureTime_ = 0D;
   }
 
   @java.lang.Override
@@ -47,30 +47,29 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 9: {
 
-            latitudeCur_ = input.readInt32();
+            latitudeCur_ = input.readDouble();
             break;
           }
-          case 16: {
+          case 17: {
 
-            longitudeCur_ = input.readInt32();
+            longitudeCur_ = input.readDouble();
             break;
           }
-          case 24: {
+          case 25: {
 
-            latitudeDes_ = input.readInt32();
+            latitudeDes_ = input.readDouble();
             break;
           }
-          case 32: {
+          case 33: {
 
-            longitudeDes_ = input.readInt32();
+            longitudeDes_ = input.readDouble();
             break;
           }
-          case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 41: {
 
-            departureTime_ = s;
+            departureTime_ = input.readDouble();
             break;
           }
           default: {
@@ -106,73 +105,48 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LATITUDECUR_FIELD_NUMBER = 1;
-  private int latitudeCur_;
+  private double latitudeCur_;
   /**
-   * <code>int32 latitudeCur = 1;</code>
+   * <code>double latitudeCur = 1;</code>
    */
-  public int getLatitudeCur() {
+  public double getLatitudeCur() {
     return latitudeCur_;
   }
 
   public static final int LONGITUDECUR_FIELD_NUMBER = 2;
-  private int longitudeCur_;
+  private double longitudeCur_;
   /**
-   * <code>int32 longitudeCur = 2;</code>
+   * <code>double longitudeCur = 2;</code>
    */
-  public int getLongitudeCur() {
+  public double getLongitudeCur() {
     return longitudeCur_;
   }
 
   public static final int LATITUDEDES_FIELD_NUMBER = 3;
-  private int latitudeDes_;
+  private double latitudeDes_;
   /**
-   * <code>int32 latitudeDes = 3;</code>
+   * <code>double latitudeDes = 3;</code>
    */
-  public int getLatitudeDes() {
+  public double getLatitudeDes() {
     return latitudeDes_;
   }
 
   public static final int LONGITUDEDES_FIELD_NUMBER = 4;
-  private int longitudeDes_;
+  private double longitudeDes_;
   /**
-   * <code>int32 longitudeDes = 4;</code>
+   * <code>double longitudeDes = 4;</code>
    */
-  public int getLongitudeDes() {
+  public double getLongitudeDes() {
     return longitudeDes_;
   }
 
   public static final int DEPARTURETIME_FIELD_NUMBER = 5;
-  private volatile java.lang.Object departureTime_;
+  private double departureTime_;
   /**
-   * <code>string departureTime = 5;</code>
+   * <code>double departureTime = 5;</code>
    */
-  public java.lang.String getDepartureTime() {
-    java.lang.Object ref = departureTime_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      departureTime_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string departureTime = 5;</code>
-   */
-  public com.google.protobuf.ByteString
-      getDepartureTimeBytes() {
-    java.lang.Object ref = departureTime_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      departureTime_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public double getDepartureTime() {
+    return departureTime_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -189,20 +163,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (latitudeCur_ != 0) {
-      output.writeInt32(1, latitudeCur_);
+    if (latitudeCur_ != 0D) {
+      output.writeDouble(1, latitudeCur_);
     }
-    if (longitudeCur_ != 0) {
-      output.writeInt32(2, longitudeCur_);
+    if (longitudeCur_ != 0D) {
+      output.writeDouble(2, longitudeCur_);
     }
-    if (latitudeDes_ != 0) {
-      output.writeInt32(3, latitudeDes_);
+    if (latitudeDes_ != 0D) {
+      output.writeDouble(3, latitudeDes_);
     }
-    if (longitudeDes_ != 0) {
-      output.writeInt32(4, longitudeDes_);
+    if (longitudeDes_ != 0D) {
+      output.writeDouble(4, longitudeDes_);
     }
-    if (!getDepartureTimeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, departureTime_);
+    if (departureTime_ != 0D) {
+      output.writeDouble(5, departureTime_);
     }
     unknownFields.writeTo(output);
   }
@@ -213,24 +187,25 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (latitudeCur_ != 0) {
+    if (latitudeCur_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, latitudeCur_);
+        .computeDoubleSize(1, latitudeCur_);
     }
-    if (longitudeCur_ != 0) {
+    if (longitudeCur_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, longitudeCur_);
+        .computeDoubleSize(2, longitudeCur_);
     }
-    if (latitudeDes_ != 0) {
+    if (latitudeDes_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, latitudeDes_);
+        .computeDoubleSize(3, latitudeDes_);
     }
-    if (longitudeDes_ != 0) {
+    if (longitudeDes_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, longitudeDes_);
+        .computeDoubleSize(4, longitudeDes_);
     }
-    if (!getDepartureTimeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, departureTime_);
+    if (departureTime_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(5, departureTime_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -248,16 +223,26 @@ private static final long serialVersionUID = 0L;
     com.caone.futureTrafficRequest other = (com.caone.futureTrafficRequest) obj;
 
     boolean result = true;
-    result = result && (getLatitudeCur()
-        == other.getLatitudeCur());
-    result = result && (getLongitudeCur()
-        == other.getLongitudeCur());
-    result = result && (getLatitudeDes()
-        == other.getLatitudeDes());
-    result = result && (getLongitudeDes()
-        == other.getLongitudeDes());
-    result = result && getDepartureTime()
-        .equals(other.getDepartureTime());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getLatitudeCur())
+        == java.lang.Double.doubleToLongBits(
+            other.getLatitudeCur()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getLongitudeCur())
+        == java.lang.Double.doubleToLongBits(
+            other.getLongitudeCur()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getLatitudeDes())
+        == java.lang.Double.doubleToLongBits(
+            other.getLatitudeDes()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getLongitudeDes())
+        == java.lang.Double.doubleToLongBits(
+            other.getLongitudeDes()));
+    result = result && (
+        java.lang.Double.doubleToLongBits(getDepartureTime())
+        == java.lang.Double.doubleToLongBits(
+            other.getDepartureTime()));
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -270,15 +255,20 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + LATITUDECUR_FIELD_NUMBER;
-    hash = (53 * hash) + getLatitudeCur();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLatitudeCur()));
     hash = (37 * hash) + LONGITUDECUR_FIELD_NUMBER;
-    hash = (53 * hash) + getLongitudeCur();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLongitudeCur()));
     hash = (37 * hash) + LATITUDEDES_FIELD_NUMBER;
-    hash = (53 * hash) + getLatitudeDes();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLatitudeDes()));
     hash = (37 * hash) + LONGITUDEDES_FIELD_NUMBER;
-    hash = (53 * hash) + getLongitudeDes();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getLongitudeDes()));
     hash = (37 * hash) + DEPARTURETIME_FIELD_NUMBER;
-    hash = (53 * hash) + getDepartureTime().hashCode();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getDepartureTime()));
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -412,15 +402,15 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      latitudeCur_ = 0;
+      latitudeCur_ = 0D;
 
-      longitudeCur_ = 0;
+      longitudeCur_ = 0D;
 
-      latitudeDes_ = 0;
+      latitudeDes_ = 0D;
 
-      longitudeDes_ = 0;
+      longitudeDes_ = 0D;
 
-      departureTime_ = "";
+      departureTime_ = 0D;
 
       return this;
     }
@@ -501,21 +491,20 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.caone.futureTrafficRequest other) {
       if (other == com.caone.futureTrafficRequest.getDefaultInstance()) return this;
-      if (other.getLatitudeCur() != 0) {
+      if (other.getLatitudeCur() != 0D) {
         setLatitudeCur(other.getLatitudeCur());
       }
-      if (other.getLongitudeCur() != 0) {
+      if (other.getLongitudeCur() != 0D) {
         setLongitudeCur(other.getLongitudeCur());
       }
-      if (other.getLatitudeDes() != 0) {
+      if (other.getLatitudeDes() != 0D) {
         setLatitudeDes(other.getLatitudeDes());
       }
-      if (other.getLongitudeDes() != 0) {
+      if (other.getLongitudeDes() != 0D) {
         setLongitudeDes(other.getLongitudeDes());
       }
-      if (!other.getDepartureTime().isEmpty()) {
-        departureTime_ = other.departureTime_;
-        onChanged();
+      if (other.getDepartureTime() != 0D) {
+        setDepartureTime(other.getDepartureTime());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -546,175 +535,132 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int latitudeCur_ ;
+    private double latitudeCur_ ;
     /**
-     * <code>int32 latitudeCur = 1;</code>
+     * <code>double latitudeCur = 1;</code>
      */
-    public int getLatitudeCur() {
+    public double getLatitudeCur() {
       return latitudeCur_;
     }
     /**
-     * <code>int32 latitudeCur = 1;</code>
+     * <code>double latitudeCur = 1;</code>
      */
-    public Builder setLatitudeCur(int value) {
+    public Builder setLatitudeCur(double value) {
       
       latitudeCur_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 latitudeCur = 1;</code>
+     * <code>double latitudeCur = 1;</code>
      */
     public Builder clearLatitudeCur() {
       
-      latitudeCur_ = 0;
+      latitudeCur_ = 0D;
       onChanged();
       return this;
     }
 
-    private int longitudeCur_ ;
+    private double longitudeCur_ ;
     /**
-     * <code>int32 longitudeCur = 2;</code>
+     * <code>double longitudeCur = 2;</code>
      */
-    public int getLongitudeCur() {
+    public double getLongitudeCur() {
       return longitudeCur_;
     }
     /**
-     * <code>int32 longitudeCur = 2;</code>
+     * <code>double longitudeCur = 2;</code>
      */
-    public Builder setLongitudeCur(int value) {
+    public Builder setLongitudeCur(double value) {
       
       longitudeCur_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 longitudeCur = 2;</code>
+     * <code>double longitudeCur = 2;</code>
      */
     public Builder clearLongitudeCur() {
       
-      longitudeCur_ = 0;
+      longitudeCur_ = 0D;
       onChanged();
       return this;
     }
 
-    private int latitudeDes_ ;
+    private double latitudeDes_ ;
     /**
-     * <code>int32 latitudeDes = 3;</code>
+     * <code>double latitudeDes = 3;</code>
      */
-    public int getLatitudeDes() {
+    public double getLatitudeDes() {
       return latitudeDes_;
     }
     /**
-     * <code>int32 latitudeDes = 3;</code>
+     * <code>double latitudeDes = 3;</code>
      */
-    public Builder setLatitudeDes(int value) {
+    public Builder setLatitudeDes(double value) {
       
       latitudeDes_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 latitudeDes = 3;</code>
+     * <code>double latitudeDes = 3;</code>
      */
     public Builder clearLatitudeDes() {
       
-      latitudeDes_ = 0;
+      latitudeDes_ = 0D;
       onChanged();
       return this;
     }
 
-    private int longitudeDes_ ;
+    private double longitudeDes_ ;
     /**
-     * <code>int32 longitudeDes = 4;</code>
+     * <code>double longitudeDes = 4;</code>
      */
-    public int getLongitudeDes() {
+    public double getLongitudeDes() {
       return longitudeDes_;
     }
     /**
-     * <code>int32 longitudeDes = 4;</code>
+     * <code>double longitudeDes = 4;</code>
      */
-    public Builder setLongitudeDes(int value) {
+    public Builder setLongitudeDes(double value) {
       
       longitudeDes_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 longitudeDes = 4;</code>
+     * <code>double longitudeDes = 4;</code>
      */
     public Builder clearLongitudeDes() {
       
-      longitudeDes_ = 0;
+      longitudeDes_ = 0D;
       onChanged();
       return this;
     }
 
-    private java.lang.Object departureTime_ = "";
+    private double departureTime_ ;
     /**
-     * <code>string departureTime = 5;</code>
+     * <code>double departureTime = 5;</code>
      */
-    public java.lang.String getDepartureTime() {
-      java.lang.Object ref = departureTime_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        departureTime_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public double getDepartureTime() {
+      return departureTime_;
     }
     /**
-     * <code>string departureTime = 5;</code>
+     * <code>double departureTime = 5;</code>
      */
-    public com.google.protobuf.ByteString
-        getDepartureTimeBytes() {
-      java.lang.Object ref = departureTime_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        departureTime_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string departureTime = 5;</code>
-     */
-    public Builder setDepartureTime(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setDepartureTime(double value) {
+      
       departureTime_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string departureTime = 5;</code>
+     * <code>double departureTime = 5;</code>
      */
     public Builder clearDepartureTime() {
       
-      departureTime_ = getDefaultInstance().getDepartureTime();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string departureTime = 5;</code>
-     */
-    public Builder setDepartureTimeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      departureTime_ = value;
+      departureTime_ = 0D;
       onChanged();
       return this;
     }

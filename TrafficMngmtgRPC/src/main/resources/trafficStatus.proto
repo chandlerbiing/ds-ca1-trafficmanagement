@@ -23,20 +23,20 @@ service CurrentStatus {
 
 message trafficRequest {
 
-  int32 latitudeCur = 1;
-  int32 longitudeCur = 2;
-  int32 latitudeDes = 3;
-  int32 longitudeDes= 4;
+  double latitudeCur = 1;
+  double longitudeCur = 2;
+  double latitudeDes = 3;
+  double longitudeDes= 4;
 
 }
  
 message futureTrafficRequest {
 
- int32 latitudeCur = 1;
-  int32 longitudeCur = 2;
-  int32 latitudeDes = 3;
-  int32 longitudeDes= 4;
-  string  departureTime = 5;
+ double latitudeCur = 1;
+ double longitudeCur = 2;
+ double latitudeDes = 3;
+ double longitudeDes= 4;
+ double departureTime = 5;
 }
 
 message trafficStatus {

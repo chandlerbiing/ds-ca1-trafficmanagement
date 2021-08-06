@@ -44,12 +44,12 @@ public final class TrafficStatusImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\023trafficStatus.proto\022\007traffic\"f\n\016traffi" +
-      "cRequest\022\023\n\013latitudeCur\030\001 \001(\005\022\024\n\014longitu" +
-      "deCur\030\002 \001(\005\022\023\n\013latitudeDes\030\003 \001(\005\022\024\n\014long" +
-      "itudeDes\030\004 \001(\005\"\203\001\n\024futureTrafficRequest\022" +
-      "\023\n\013latitudeCur\030\001 \001(\005\022\024\n\014longitudeCur\030\002 \001" +
-      "(\005\022\023\n\013latitudeDes\030\003 \001(\005\022\024\n\014longitudeDes\030" +
-      "\004 \001(\005\022\025\n\rdepartureTime\030\005 \001(\t\" \n\rtrafficS" +
+      "cRequest\022\023\n\013latitudeCur\030\001 \001(\001\022\024\n\014longitu" +
+      "deCur\030\002 \001(\001\022\023\n\013latitudeDes\030\003 \001(\001\022\024\n\014long" +
+      "itudeDes\030\004 \001(\001\"\203\001\n\024futureTrafficRequest\022" +
+      "\023\n\013latitudeCur\030\001 \001(\001\022\024\n\014longitudeCur\030\002 \001" +
+      "(\001\022\023\n\013latitudeDes\030\003 \001(\001\022\024\n\014longitudeDes\030" +
+      "\004 \001(\001\022\025\n\rdepartureTime\030\005 \001(\001\" \n\rtrafficS" +
       "tatus\022\017\n\007message\030\001 \001(\t\"%\n\025forecastTraffi" +
       "cStatus\022\014\n\004name\030\001 \001(\t2\250\001\n\rCurrentStatus\022" +
       "B\n\rcurrentStatus\022\027.traffic.trafficReques" +

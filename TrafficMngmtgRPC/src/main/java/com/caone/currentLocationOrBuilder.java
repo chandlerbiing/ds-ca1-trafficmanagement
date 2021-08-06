@@ -8,12 +8,12 @@ public interface currentLocationOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 latitudeCur = 1;</code>
+   * <code>double latitudeCur = 1;</code>
    */
-  int getLatitudeCur();
+  double getLatitudeCur();
 
   /**
-   * <code>int32 longitudeCur = 2;</code>
+   * <code>double longitudeCur = 2;</code>
    */
-  int getLongitudeCur();
+  double getLongitudeCur();
 }
