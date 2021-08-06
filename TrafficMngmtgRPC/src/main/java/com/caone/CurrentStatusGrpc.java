@@ -24,7 +24,7 @@ public final class CurrentStatusGrpc {
 
   private CurrentStatusGrpc() {}
 
-  public static final String SERVICE_NAME = "trafficStatus.CurrentStatus";
+  public static final String SERVICE_NAME = "traffic.CurrentStatus";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.caone.trafficRequest,
@@ -34,7 +34,7 @@ public final class CurrentStatusGrpc {
       fullMethodName = SERVICE_NAME + '/' + "currentStatus",
       requestType = com.caone.trafficRequest.class,
       responseType = com.caone.trafficStatus.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.caone.trafficRequest,
       com.caone.trafficStatus> getCurrentStatusMethod() {
     io.grpc.MethodDescriptor<com.caone.trafficRequest, com.caone.trafficStatus> getCurrentStatusMethod;
@@ -43,9 +43,9 @@ public final class CurrentStatusGrpc {
         if ((getCurrentStatusMethod = CurrentStatusGrpc.getCurrentStatusMethod) == null) {
           CurrentStatusGrpc.getCurrentStatusMethod = getCurrentStatusMethod = 
               io.grpc.MethodDescriptor.<com.caone.trafficRequest, com.caone.trafficStatus>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "trafficStatus.CurrentStatus", "currentStatus"))
+                  "traffic.CurrentStatus", "currentStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.caone.trafficRequest.getDefaultInstance()))
@@ -57,6 +57,38 @@ public final class CurrentStatusGrpc {
         }
      }
      return getCurrentStatusMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.caone.futureTrafficRequest,
+      com.caone.forecastTrafficStatus> getFutureStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "futureStatus",
+      requestType = com.caone.futureTrafficRequest.class,
+      responseType = com.caone.forecastTrafficStatus.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.caone.futureTrafficRequest,
+      com.caone.forecastTrafficStatus> getFutureStatusMethod() {
+    io.grpc.MethodDescriptor<com.caone.futureTrafficRequest, com.caone.forecastTrafficStatus> getFutureStatusMethod;
+    if ((getFutureStatusMethod = CurrentStatusGrpc.getFutureStatusMethod) == null) {
+      synchronized (CurrentStatusGrpc.class) {
+        if ((getFutureStatusMethod = CurrentStatusGrpc.getFutureStatusMethod) == null) {
+          CurrentStatusGrpc.getFutureStatusMethod = getFutureStatusMethod = 
+              io.grpc.MethodDescriptor.<com.caone.futureTrafficRequest, com.caone.forecastTrafficStatus>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "traffic.CurrentStatus", "futureStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.caone.futureTrafficRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.caone.forecastTrafficStatus.getDefaultInstance()))
+                  .setSchemaDescriptor(new CurrentStatusMethodDescriptorSupplier("futureStatus"))
+                  .build();
+          }
+        }
+     }
+     return getFutureStatusMethod;
   }
 
   /**
@@ -88,20 +120,34 @@ public final class CurrentStatusGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.caone.trafficRequest> currentStatus(
+    public void currentStatus(com.caone.trafficRequest request,
         io.grpc.stub.StreamObserver<com.caone.trafficStatus> responseObserver) {
-      return asyncUnimplementedStreamingCall(getCurrentStatusMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getCurrentStatusMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.caone.futureTrafficRequest> futureStatus(
+        io.grpc.stub.StreamObserver<com.caone.forecastTrafficStatus> responseObserver) {
+      return asyncUnimplementedStreamingCall(getFutureStatusMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getCurrentStatusMethod(),
-            asyncClientStreamingCall(
+            asyncUnaryCall(
               new MethodHandlers<
                 com.caone.trafficRequest,
                 com.caone.trafficStatus>(
                   this, METHODID_CURRENT_STATUS)))
+          .addMethod(
+            getFutureStatusMethod(),
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.caone.futureTrafficRequest,
+                com.caone.forecastTrafficStatus>(
+                  this, METHODID_FUTURE_STATUS)))
           .build();
     }
   }
@@ -126,10 +172,18 @@ public final class CurrentStatusGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.caone.trafficRequest> currentStatus(
+    public void currentStatus(com.caone.trafficRequest request,
         io.grpc.stub.StreamObserver<com.caone.trafficStatus> responseObserver) {
-      return asyncClientStreamingCall(
-          getChannel().newCall(getCurrentStatusMethod(), getCallOptions()), responseObserver);
+      asyncUnaryCall(
+          getChannel().newCall(getCurrentStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.caone.futureTrafficRequest> futureStatus(
+        io.grpc.stub.StreamObserver<com.caone.forecastTrafficStatus> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getFutureStatusMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -151,10 +205,12 @@ public final class CurrentStatusGrpc {
       return new CurrentStatusBlockingStub(channel, callOptions);
     }
 
-	public trafficStatus currentStatus(trafficRequest req) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     */
+    public com.caone.trafficStatus currentStatus(com.caone.trafficRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getCurrentStatusMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -174,9 +230,18 @@ public final class CurrentStatusGrpc {
         io.grpc.CallOptions callOptions) {
       return new CurrentStatusFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.caone.trafficStatus> currentStatus(
+        com.caone.trafficRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getCurrentStatusMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CURRENT_STATUS = 0;
+  private static final int METHODID_FUTURE_STATUS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -195,6 +260,10 @@ public final class CurrentStatusGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CURRENT_STATUS:
+          serviceImpl.currentStatus((com.caone.trafficRequest) request,
+              (io.grpc.stub.StreamObserver<com.caone.trafficStatus>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -205,9 +274,9 @@ public final class CurrentStatusGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CURRENT_STATUS:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.currentStatus(
-              (io.grpc.stub.StreamObserver<com.caone.trafficStatus>) responseObserver);
+        case METHODID_FUTURE_STATUS:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.futureStatus(
+              (io.grpc.stub.StreamObserver<com.caone.forecastTrafficStatus>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -220,7 +289,7 @@ public final class CurrentStatusGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.caone.TrafficMngmtImpl.getDescriptor();
+      return com.caone.TrafficStatusImpl.getDescriptor();
     }
 
     @java.lang.Override
@@ -260,6 +329,7 @@ public final class CurrentStatusGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new CurrentStatusFileDescriptorSupplier())
               .addMethod(getCurrentStatusMethod())
+              .addMethod(getFutureStatusMethod())
               .build();
         }
       }
