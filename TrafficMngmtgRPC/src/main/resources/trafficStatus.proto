@@ -1,0 +1,55 @@
+syntax ="proto3";
+
+option java_multiple_files = true;
+option java_package = "com.caone";
+option java_outer_classname = "TrafficMngmtImpl";
+
+
+
+package trafficStatus;
+
+//Service Definition
+
+
+service CurrentStatus {
+
+
+ rpc currentStatus (stream trafficRequest) returns (trafficStatus){}
+
+
+
+}
+
+
+
+message trafficRequest {
+
+string currentdestination = 1;
+string desireddestination =2;
+
+}
+
+
+message trafficStatus {
+
+ string message =1;
+
+}
+
+
+
+service FutureStatus {
+
+
+rpc  futureStatus (stream trafficRequest) returns ( stream forecastTrafficStatus){}
+
+
+
+}
+
+
+message forecastTrafficStatus {
+
+string name = 1;
+
+}
