@@ -14,42 +14,81 @@ package trafficStatus;
 service CurrentStatus {
 
 
- rpc currentStatus (stream trafficRequest) returns (trafficStatus){}
+ rpc currentStatus (trafficRequest) returns (trafficStatus){}
+
+ rpc  futureStatus (stream futureTrafficRequest) returns (stream forecastTrafficStatus){}
+
+}
+
+service DynamicTrafficControl {
+
+
+ rpc liveUpdate(currentLocation) returns (stream trafficUpdate) {}
+
+
+  rpc userOps (stream registration) returns (registrationStatus) {}
 
 
 
 }
-
 
 
 message trafficRequest {
 
-string currentdestination = 1;
-string desireddestination =2;
+  int32 latitudeCur = 1;
+  int32 longitudeCur = 2;
+  int32 latitudeDes = 3;
+  int32 longitudeDes= 4;
 
 }
+ 
+message futureTrafficRequest {
 
+ int32 latitudeCur = 1;
+  int32 longitudeCur = 2;
+  int32 latitudeDes = 3;
+  int32 longitudeDes= 4;
+  long  departureTime  = 5;
+}
 
 message trafficStatus {
 
- string message =1;
+ string message = 1;
 
 }
 
-
-
-service FutureStatus {
-
-
-rpc  futureStatus (stream trafficRequest) returns ( stream forecastTrafficStatus){}
-
-
-
-}
 
 
 message forecastTrafficStatus {
 
 string name = 1;
+
+}
+
+message currentLocation {
+
+ int32 latitudeCur = 1;
+ int32 longitudeCur = 2;
+
+}
+
+message trafficUpdate {
+
+string update = 1;
+
+} 
+
+message registration {
+
+string userName = 1;
+
+string email = 2;
+
+}
+
+
+message registrationStatus {
+
+string status = 1;
 
 }

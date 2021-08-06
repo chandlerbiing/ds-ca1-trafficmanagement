@@ -150,6 +150,11 @@ public final class CurrentStatusGrpc {
         io.grpc.CallOptions callOptions) {
       return new CurrentStatusBlockingStub(channel, callOptions);
     }
+
+	public trafficStatus currentStatus(trafficRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
   }
 
   /**

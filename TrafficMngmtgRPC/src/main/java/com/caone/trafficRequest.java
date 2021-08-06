@@ -15,7 +15,7 @@ private static final long serialVersionUID = 0L;
   private trafficRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private trafficRequest() {
+  trafficRequest() {
     currentdestination_ = "";
     desireddestination_ = "";
   }
@@ -93,7 +93,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <code>string currentdestination = 1;</code>
    */
-  public java.lang.String getCurrentdestination() {
+  public  java.lang.String getCurrentdestination() {
     java.lang.Object ref = currentdestination_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
