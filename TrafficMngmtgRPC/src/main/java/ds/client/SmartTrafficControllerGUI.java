@@ -4,7 +4,14 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -41,6 +48,9 @@ public class SmartTrafficControllerGUI implements ActionListener{
 	//private static TrafficUpdatesGrpc.TrafficUpdatesBlockingStub tBlockingStub;
 	
 	private static TrafficUpdatesGrpc.TrafficUpdatesStub tAsyncStub;
+	
+	private ServiceInfo trafficServiceInfo;
+	
 	
 	
 	//A panel for each RPC
@@ -253,14 +263,19 @@ public class SmartTrafficControllerGUI implements ActionListener{
 	public static void main(String[] args) {
 
 		SmartTrafficControllerGUI gui = new SmartTrafficControllerGUI();
+		
+	
 
 		gui.build();
 	}
 	
 	
 	private void build() { 
-
-		JFrame frame = new JFrame("Service Controller Sample");
+		
+		String traffic_service_type = "_http._tcp.local.";
+		discoverSmartTrafficMngmtService(traffic_service_type);
+		
+		JFrame frame = new JFrame("Smart Traffic Management Application");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Set the panel to add buttons
@@ -290,6 +305,66 @@ public class SmartTrafficControllerGUI implements ActionListener{
 	}
 
 	
+	private void discoverSmartTrafficMngmtService(String service_type) {
+		
+		
+		try {
+			// Create a JmDNS instance
+			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+
+				
+			jmdns.addServiceListener(service_type, new ServiceListener() {
+				
+				@Override
+				public void serviceResolved(ServiceEvent event) {
+					System.out.println("Traffic Managment Service resolved: " + event.getInfo());
+
+					trafficServiceInfo = event.getInfo();
+
+					int port = trafficServiceInfo.getPort();
+					
+					System.out.println("resolving " + service_type + " with properties ...");
+					System.out.println("\t port: " + port);
+					System.out.println("\t type:"+ event.getType());
+					System.out.println("\t name: " + event.getName());
+					System.out.println("\t description/properties: " + trafficServiceInfo.getNiceTextString());
+					System.out.println("\t host: " + trafficServiceInfo.getHostAddresses()[0]);
+				
+					
+				}
+				
+				@Override
+				public void serviceRemoved(ServiceEvent event) {
+					System.out.println("Traffic Service removed: " + event.getInfo());
+
+					
+				}
+				
+				@Override
+				public void serviceAdded(ServiceEvent event) {
+					System.out.println("Traffic Service added: " + event.getInfo());
+
+					
+				}
+			});
+			
+			// Wait a bit
+			Thread.sleep(2000);
+			
+			jmdns.close();
+
+		} catch (UnknownHostException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -310,6 +385,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			asyncStub = TripPlannerGrpc.newStub(channel);
 			
 			
+			
 			double numLat1 = 53.2734;
 			double numLong1 = -7.77832031;
 			double numLat2 = 44.21370930989555;
@@ -323,7 +399,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			
 			trafficStatus response2 = blockingStub.currentStatus(reqqy);
 		
-			System.out.println("Traffic For the journey requested is " + response2.getMessage());	
+			System.out.println("Status:  " + response2.getMessage());	
 		
 			
 		
