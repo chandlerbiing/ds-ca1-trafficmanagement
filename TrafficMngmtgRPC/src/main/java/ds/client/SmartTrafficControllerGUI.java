@@ -288,7 +288,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 
 		// Set the panel to add buttons
 		JPanel panel = new JPanel();
-		JPanel panel1 = new JPanel();
+		
 
 		// Set the BoxLayout to be X_AXIS: from left to right
 		BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
@@ -296,9 +296,11 @@ public class SmartTrafficControllerGUI implements ActionListener{
 	
 
 		panel.setLayout(boxlayout);
+		
 	
 		// Set border for the panel
 		panel.setBorder(new EmptyBorder(new Insets(50, 100, 50, 100)));
+		
 		
 	
 	
@@ -311,7 +313,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 		// Set size for the frame
 		frame.setSize(300, 300);
 
-		// Set the window to be visible as the default to be false
+		// Set the window to be visible and the default to be false
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
