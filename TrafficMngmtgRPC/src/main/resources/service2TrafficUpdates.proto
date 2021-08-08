@@ -1,22 +1,22 @@
 syntax ="proto3";
 
 option java_multiple_files = true;
-option java_package = "com.caone";
+option java_package = "ds.service2";
 option java_outer_classname = "DynamicTrafficControlImpl";
 
-package dynamic;
+package service2;
 
 
 
 //Service Definition
 
-service DynamicTrafficControl {
+service TrafficUpdates {
 
 
  rpc liveUpdate(currentLocation) returns (stream trafficUpdate) {}
 
 
- rpc userOps (stream registration) returns (registrationStatus) {}
+ rpc newUser (stream registration) returns (registrationStatus) {}
 
 
 }

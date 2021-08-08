@@ -1,4 +1,4 @@
-package com.caone;
+package ds.service1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -19,39 +19,39 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.15.0)",
-    comments = "Source: trafficStatus.proto")
-public final class CurrentStatusGrpc {
+    comments = "Source: service1TripPlanner.proto")
+public final class TripPlannerGrpc {
 
-  private CurrentStatusGrpc() {}
+  private TripPlannerGrpc() {}
 
-  public static final String SERVICE_NAME = "traffic.CurrentStatus";
+  public static final String SERVICE_NAME = "service1.TripPlanner";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.caone.trafficRequest,
-      com.caone.trafficStatus> getCurrentStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.service1.trafficRequest,
+      ds.service1.trafficStatus> getCurrentStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "currentStatus",
-      requestType = com.caone.trafficRequest.class,
-      responseType = com.caone.trafficStatus.class,
+      requestType = ds.service1.trafficRequest.class,
+      responseType = ds.service1.trafficStatus.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.caone.trafficRequest,
-      com.caone.trafficStatus> getCurrentStatusMethod() {
-    io.grpc.MethodDescriptor<com.caone.trafficRequest, com.caone.trafficStatus> getCurrentStatusMethod;
-    if ((getCurrentStatusMethod = CurrentStatusGrpc.getCurrentStatusMethod) == null) {
-      synchronized (CurrentStatusGrpc.class) {
-        if ((getCurrentStatusMethod = CurrentStatusGrpc.getCurrentStatusMethod) == null) {
-          CurrentStatusGrpc.getCurrentStatusMethod = getCurrentStatusMethod = 
-              io.grpc.MethodDescriptor.<com.caone.trafficRequest, com.caone.trafficStatus>newBuilder()
+  public static io.grpc.MethodDescriptor<ds.service1.trafficRequest,
+      ds.service1.trafficStatus> getCurrentStatusMethod() {
+    io.grpc.MethodDescriptor<ds.service1.trafficRequest, ds.service1.trafficStatus> getCurrentStatusMethod;
+    if ((getCurrentStatusMethod = TripPlannerGrpc.getCurrentStatusMethod) == null) {
+      synchronized (TripPlannerGrpc.class) {
+        if ((getCurrentStatusMethod = TripPlannerGrpc.getCurrentStatusMethod) == null) {
+          TripPlannerGrpc.getCurrentStatusMethod = getCurrentStatusMethod = 
+              io.grpc.MethodDescriptor.<ds.service1.trafficRequest, ds.service1.trafficStatus>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "traffic.CurrentStatus", "currentStatus"))
+                  "service1.TripPlanner", "currentStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.caone.trafficRequest.getDefaultInstance()))
+                  ds.service1.trafficRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.caone.trafficStatus.getDefaultInstance()))
-                  .setSchemaDescriptor(new CurrentStatusMethodDescriptorSupplier("currentStatus"))
+                  ds.service1.trafficStatus.getDefaultInstance()))
+                  .setSchemaDescriptor(new TripPlannerMethodDescriptorSupplier("currentStatus"))
                   .build();
           }
         }
@@ -59,31 +59,31 @@ public final class CurrentStatusGrpc {
      return getCurrentStatusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.caone.futureTrafficRequest,
-      com.caone.forecastTrafficStatus> getFutureStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<ds.service1.futureTrafficRequest,
+      ds.service1.forecastTrafficStatus> getFutureStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "futureStatus",
-      requestType = com.caone.futureTrafficRequest.class,
-      responseType = com.caone.forecastTrafficStatus.class,
+      requestType = ds.service1.futureTrafficRequest.class,
+      responseType = ds.service1.forecastTrafficStatus.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<com.caone.futureTrafficRequest,
-      com.caone.forecastTrafficStatus> getFutureStatusMethod() {
-    io.grpc.MethodDescriptor<com.caone.futureTrafficRequest, com.caone.forecastTrafficStatus> getFutureStatusMethod;
-    if ((getFutureStatusMethod = CurrentStatusGrpc.getFutureStatusMethod) == null) {
-      synchronized (CurrentStatusGrpc.class) {
-        if ((getFutureStatusMethod = CurrentStatusGrpc.getFutureStatusMethod) == null) {
-          CurrentStatusGrpc.getFutureStatusMethod = getFutureStatusMethod = 
-              io.grpc.MethodDescriptor.<com.caone.futureTrafficRequest, com.caone.forecastTrafficStatus>newBuilder()
+  public static io.grpc.MethodDescriptor<ds.service1.futureTrafficRequest,
+      ds.service1.forecastTrafficStatus> getFutureStatusMethod() {
+    io.grpc.MethodDescriptor<ds.service1.futureTrafficRequest, ds.service1.forecastTrafficStatus> getFutureStatusMethod;
+    if ((getFutureStatusMethod = TripPlannerGrpc.getFutureStatusMethod) == null) {
+      synchronized (TripPlannerGrpc.class) {
+        if ((getFutureStatusMethod = TripPlannerGrpc.getFutureStatusMethod) == null) {
+          TripPlannerGrpc.getFutureStatusMethod = getFutureStatusMethod = 
+              io.grpc.MethodDescriptor.<ds.service1.futureTrafficRequest, ds.service1.forecastTrafficStatus>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "traffic.CurrentStatus", "futureStatus"))
+                  "service1.TripPlanner", "futureStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.caone.futureTrafficRequest.getDefaultInstance()))
+                  ds.service1.futureTrafficRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.caone.forecastTrafficStatus.getDefaultInstance()))
-                  .setSchemaDescriptor(new CurrentStatusMethodDescriptorSupplier("futureStatus"))
+                  ds.service1.forecastTrafficStatus.getDefaultInstance()))
+                  .setSchemaDescriptor(new TripPlannerMethodDescriptorSupplier("futureStatus"))
                   .build();
           }
         }
@@ -94,41 +94,41 @@ public final class CurrentStatusGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static CurrentStatusStub newStub(io.grpc.Channel channel) {
-    return new CurrentStatusStub(channel);
+  public static TripPlannerStub newStub(io.grpc.Channel channel) {
+    return new TripPlannerStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static CurrentStatusBlockingStub newBlockingStub(
+  public static TripPlannerBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new CurrentStatusBlockingStub(channel);
+    return new TripPlannerBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static CurrentStatusFutureStub newFutureStub(
+  public static TripPlannerFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new CurrentStatusFutureStub(channel);
+    return new TripPlannerFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class CurrentStatusImplBase implements io.grpc.BindableService {
+  public static abstract class TripPlannerImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void currentStatus(com.caone.trafficRequest request,
-        io.grpc.stub.StreamObserver<com.caone.trafficStatus> responseObserver) {
+    public void currentStatus(ds.service1.trafficRequest request,
+        io.grpc.stub.StreamObserver<ds.service1.trafficStatus> responseObserver) {
       asyncUnimplementedUnaryCall(getCurrentStatusMethod(), responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.caone.futureTrafficRequest> futureStatus(
-        io.grpc.stub.StreamObserver<com.caone.forecastTrafficStatus> responseObserver) {
+    public io.grpc.stub.StreamObserver<ds.service1.futureTrafficRequest> futureStatus(
+        io.grpc.stub.StreamObserver<ds.service1.forecastTrafficStatus> responseObserver) {
       return asyncUnimplementedStreamingCall(getFutureStatusMethod(), responseObserver);
     }
 
@@ -138,15 +138,15 @@ public final class CurrentStatusGrpc {
             getCurrentStatusMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.caone.trafficRequest,
-                com.caone.trafficStatus>(
+                ds.service1.trafficRequest,
+                ds.service1.trafficStatus>(
                   this, METHODID_CURRENT_STATUS)))
           .addMethod(
             getFutureStatusMethod(),
             asyncBidiStreamingCall(
               new MethodHandlers<
-                com.caone.futureTrafficRequest,
-                com.caone.forecastTrafficStatus>(
+                ds.service1.futureTrafficRequest,
+                ds.service1.forecastTrafficStatus>(
                   this, METHODID_FUTURE_STATUS)))
           .build();
     }
@@ -154,34 +154,34 @@ public final class CurrentStatusGrpc {
 
   /**
    */
-  public static final class CurrentStatusStub extends io.grpc.stub.AbstractStub<CurrentStatusStub> {
-    private CurrentStatusStub(io.grpc.Channel channel) {
+  public static final class TripPlannerStub extends io.grpc.stub.AbstractStub<TripPlannerStub> {
+    private TripPlannerStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private CurrentStatusStub(io.grpc.Channel channel,
+    private TripPlannerStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected CurrentStatusStub build(io.grpc.Channel channel,
+    protected TripPlannerStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new CurrentStatusStub(channel, callOptions);
+      return new TripPlannerStub(channel, callOptions);
     }
 
     /**
      */
-    public void currentStatus(com.caone.trafficRequest request,
-        io.grpc.stub.StreamObserver<com.caone.trafficStatus> responseObserver) {
+    public void currentStatus(ds.service1.trafficRequest request,
+        io.grpc.stub.StreamObserver<ds.service1.trafficStatus> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getCurrentStatusMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.caone.futureTrafficRequest> futureStatus(
-        io.grpc.stub.StreamObserver<com.caone.forecastTrafficStatus> responseObserver) {
+    public io.grpc.stub.StreamObserver<ds.service1.futureTrafficRequest> futureStatus(
+        io.grpc.stub.StreamObserver<ds.service1.forecastTrafficStatus> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(getFutureStatusMethod(), getCallOptions()), responseObserver);
     }
@@ -189,25 +189,25 @@ public final class CurrentStatusGrpc {
 
   /**
    */
-  public static final class CurrentStatusBlockingStub extends io.grpc.stub.AbstractStub<CurrentStatusBlockingStub> {
-    private CurrentStatusBlockingStub(io.grpc.Channel channel) {
+  public static final class TripPlannerBlockingStub extends io.grpc.stub.AbstractStub<TripPlannerBlockingStub> {
+    private TripPlannerBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private CurrentStatusBlockingStub(io.grpc.Channel channel,
+    private TripPlannerBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected CurrentStatusBlockingStub build(io.grpc.Channel channel,
+    protected TripPlannerBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new CurrentStatusBlockingStub(channel, callOptions);
+      return new TripPlannerBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public com.caone.trafficStatus currentStatus(com.caone.trafficRequest request) {
+    public ds.service1.trafficStatus currentStatus(ds.service1.trafficRequest request) {
       return blockingUnaryCall(
           getChannel(), getCurrentStatusMethod(), getCallOptions(), request);
     }
@@ -215,26 +215,26 @@ public final class CurrentStatusGrpc {
 
   /**
    */
-  public static final class CurrentStatusFutureStub extends io.grpc.stub.AbstractStub<CurrentStatusFutureStub> {
-    private CurrentStatusFutureStub(io.grpc.Channel channel) {
+  public static final class TripPlannerFutureStub extends io.grpc.stub.AbstractStub<TripPlannerFutureStub> {
+    private TripPlannerFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private CurrentStatusFutureStub(io.grpc.Channel channel,
+    private TripPlannerFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected CurrentStatusFutureStub build(io.grpc.Channel channel,
+    protected TripPlannerFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new CurrentStatusFutureStub(channel, callOptions);
+      return new TripPlannerFutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.caone.trafficStatus> currentStatus(
-        com.caone.trafficRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<ds.service1.trafficStatus> currentStatus(
+        ds.service1.trafficRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getCurrentStatusMethod(), getCallOptions()), request);
     }
@@ -248,10 +248,10 @@ public final class CurrentStatusGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final CurrentStatusImplBase serviceImpl;
+    private final TripPlannerImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(CurrentStatusImplBase serviceImpl, int methodId) {
+    MethodHandlers(TripPlannerImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -261,8 +261,8 @@ public final class CurrentStatusGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_CURRENT_STATUS:
-          serviceImpl.currentStatus((com.caone.trafficRequest) request,
-              (io.grpc.stub.StreamObserver<com.caone.trafficStatus>) responseObserver);
+          serviceImpl.currentStatus((ds.service1.trafficRequest) request,
+              (io.grpc.stub.StreamObserver<ds.service1.trafficStatus>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -276,39 +276,39 @@ public final class CurrentStatusGrpc {
       switch (methodId) {
         case METHODID_FUTURE_STATUS:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.futureStatus(
-              (io.grpc.stub.StreamObserver<com.caone.forecastTrafficStatus>) responseObserver);
+              (io.grpc.stub.StreamObserver<ds.service1.forecastTrafficStatus>) responseObserver);
         default:
           throw new AssertionError();
       }
     }
   }
 
-  private static abstract class CurrentStatusBaseDescriptorSupplier
+  private static abstract class TripPlannerBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    CurrentStatusBaseDescriptorSupplier() {}
+    TripPlannerBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.caone.TrafficStatusImpl.getDescriptor();
+      return ds.service1.TrafficStatusImpl.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("CurrentStatus");
+      return getFileDescriptor().findServiceByName("TripPlanner");
     }
   }
 
-  private static final class CurrentStatusFileDescriptorSupplier
-      extends CurrentStatusBaseDescriptorSupplier {
-    CurrentStatusFileDescriptorSupplier() {}
+  private static final class TripPlannerFileDescriptorSupplier
+      extends TripPlannerBaseDescriptorSupplier {
+    TripPlannerFileDescriptorSupplier() {}
   }
 
-  private static final class CurrentStatusMethodDescriptorSupplier
-      extends CurrentStatusBaseDescriptorSupplier
+  private static final class TripPlannerMethodDescriptorSupplier
+      extends TripPlannerBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    CurrentStatusMethodDescriptorSupplier(String methodName) {
+    TripPlannerMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -323,11 +323,11 @@ public final class CurrentStatusGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (CurrentStatusGrpc.class) {
+      synchronized (TripPlannerGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new CurrentStatusFileDescriptorSupplier())
+              .setSchemaDescriptor(new TripPlannerFileDescriptorSupplier())
               .addMethod(getCurrentStatusMethod())
               .addMethod(getFutureStatusMethod())
               .build();

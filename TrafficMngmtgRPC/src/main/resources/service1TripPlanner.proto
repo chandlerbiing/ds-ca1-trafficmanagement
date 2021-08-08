@@ -1,17 +1,17 @@
 syntax ="proto3";
 
 option java_multiple_files = true;
-option java_package = "com.caone";
+option java_package = "ds.service1";
 option java_outer_classname = "TrafficStatusImpl";
 
 
 
-package traffic;
+package service1;
 
 //Service Definition
 
 
-service CurrentStatus {
+service TripPlanner {
 
 
  rpc currentStatus (trafficRequest) returns (trafficStatus){}
