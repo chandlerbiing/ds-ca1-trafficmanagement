@@ -106,39 +106,39 @@ public class SmartTrafficControllerGUI implements ActionListener{
 	
 	private JPanel getLiveUpdatePanel() {
 
-		JPanel panel = new JPanel();
+		JPanel panel1 = new JPanel();
 
-		BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
+		BoxLayout boxlayout = new BoxLayout(panel1, BoxLayout.X_AXIS);
 
 		JLabel label3 = new JLabel("Enter Longitude")	;
-		panel.add(label3);
-		panel.add(Box.createRigidArea(new Dimension(10, 0)));
+		panel1.add(label3);
+		panel1.add(Box.createRigidArea(new Dimension(10, 0)));
 		entry3 = new JTextField("",10);
-		panel.add(entry3);
-		panel.add(Box.createRigidArea(new Dimension(10, 0)));
+		panel1.add(entry3);
+		panel1.add(Box.createRigidArea(new Dimension(10, 0)));
 		
 		
 		JLabel label = new JLabel("Enter Latitude")	;
-		panel.add(label);
-		panel.add(Box.createRigidArea(new Dimension(10, 0)));
+		panel1.add(label);
+		panel1.add(Box.createRigidArea(new Dimension(10, 0)));
 		entry4 = new JTextField("",10);
-		panel.add(entry4);
-		panel.add(Box.createRigidArea(new Dimension(10, 0)));
+		panel1.add(entry4);
+		panel1.add(Box.createRigidArea(new Dimension(10, 0)));
 		
 		
 
 		JButton button = new JButton("Live Update");
 		button.addActionListener(this);
-		panel.add(button);
-		panel.add(Box.createRigidArea(new Dimension(10, 0)));
+		panel1.add(button);
+		panel1.add(Box.createRigidArea(new Dimension(10, 0)));
 
 		reply2 = new JTextArea();
 		reply2 .setEditable(false);
-		panel.add(reply2 );
+		panel1.add(reply2 );
 
-		panel.setLayout(boxlayout);
+		panel1.setLayout(boxlayout);
 
-		return panel;
+		return panel1;
 
 	}
 	
@@ -288,14 +288,19 @@ public class SmartTrafficControllerGUI implements ActionListener{
 
 		// Set the panel to add buttons
 		JPanel panel = new JPanel();
+		JPanel panel1 = new JPanel();
 
 		// Set the BoxLayout to be X_AXIS: from left to right
 		BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.Y_AXIS);
+		
+	
 
 		panel.setLayout(boxlayout);
-
+	
 		// Set border for the panel
 		panel.setBorder(new EmptyBorder(new Insets(50, 100, 50, 100)));
+		
+	
 	
 		panel.add( getRegistrationPanel() );
 		panel.add( getLiveUpdatePanel() );
@@ -502,9 +507,13 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			
 			tAsyncStub = TrafficUpdatesGrpc.newStub(channel);
 			
-			double longi = Double.parseDouble(entry2.getText());
+//			String x = entry2.getText();
+//			
+//			String y = entry3.getText();
 			
-			double lat = Double.parseDouble(entry3.getText());
+			double longi = Double.valueOf(entry2.getText());
+			
+			double lat =  Double.valueOf(entry3.getText());
 			
 			currentLocation request = currentLocation.newBuilder().setLatitudeCur(lat).setLongitudeCur(longi).build();
 			
@@ -635,203 +644,4 @@ public class SmartTrafficControllerGUI implements ActionListener{
 		
 	}
 	
-}//end of SmartTrafficController Class
-
-
-
-
-// -----------------------------
-
-//	private void newUser() {
-//		
-//		
-//		StreamObserver<registrationStatus> responseObserver = new StreamObserver<registrationStatus>() {
-//
-//			@Override
-//			public void onNext(registrationStatus value) {
-//				
-//				
-//				
-//			}
-//
-//			@Override
-//			public void onError(Throwable t) {
-//				// TODO Auto-generated method stub
-//				t.printStackTrace();
-//			}
-//
-//			@Override
-//			public void onCompleted() {
-//				// TODO Auto-generated method stub
-//				System.out.println("stream is completed ... Registration Completed");
-//			}
-//			
-//			
-//			
-//		};
-//		
-//		
-//		StreamObserver<registration> requestObserver = tAsyncStub.newUser(responseObserver);
-//		try {
-//		
-//			requestObserver.onNext(registration.newBuilder().setUserName("tanya007").build());
-//			Thread.sleep(500);
-//			
-//			requestObserver.onNext(registration.newBuilder().setEmail("myemail@distributedsystems.com").build());
-//			Thread.sleep(500);
-//			
-//			
-//			
-//			// Mark the end of requests
-//			requestObserver.onCompleted();
-//			
-//			
-//			Thread.sleep(10000);
-//			
-//		}  catch (RuntimeException e) {
-//			e.printStackTrace();
-//		} catch (InterruptedException e) {			
-//			e.printStackTrace();
-//		}
-//		
-//			
-//		
-//	}
-//
-//
-//
-//	private void liveUpdate() {
-//		// TODO Auto-generated method stub
-//		
-//		currentLocation request = currentLocation.newBuilder().setLatitudeCur(53.2734).setLongitudeCur(-7.77832031).build();
-//		
-//		StreamObserver<trafficUpdate> responseObserver = new StreamObserver<trafficUpdate>(){
-//			
-//			
-//		int count;
-//
-//			@Override
-//			public void onNext(trafficUpdate value) {
-//			
-//				
-//				System.out.println("receiving traffic update" + value.getUpdate());
-//				count++;
-//			}
-//
-//			@Override
-//			public void onError(Throwable t) {
-//			
-//				t.printStackTrace();
-//			}
-//
-//			@Override
-//			public void onCompleted() {
-//				System.out.println("stream is completed. Received "+ count+ " traffic related updates");
-//				
-//			}};
-//			
-//			tAsyncStub.liveUpdate(request, responseObserver);
-//			
-//			try {
-//				Thread.sleep(15000);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			
-//		
-//	}
-//
-//
-//
-//	private void currentStatus() {
-//		// TODO Auto-generated method stub
-//		
-//		double numLat1 = 53.2734;
-//		double numLong1 = -7.77832031;
-//		double numLat2 = 44.21370930989555;
-//		double numLong2 = 4.042968750000001;
-//	
-//		//preparing message to send
-//		trafficRequest reqqy = trafficRequest.newBuilder().setLatitudeCur(numLat1).setLongitudeCur(numLong1).
-//		setLongitudeDes(numLat2).setLatitudeDes(numLong2).build();
-//		
-//		//retrieving reply from service
-//		
-//		trafficStatus response2 = blockingStub.currentStatus(reqqy);
-//	
-//		System.out.println("Traffic For the journey requested is " + response2.getMessage());	
-//		
-//	}
-//
-//
-//
-//	private void futureStatus() {
-//		// TODO Auto-generated method stub
-//		
-//		
-//
-//		
-//		
-//		StreamObserver<forecastTrafficStatus> responseObserver2 = new StreamObserver<forecastTrafficStatus>() {
-//
-//			@Override
-//			public void onNext(forecastTrafficStatus value) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void onError(Throwable t) {
-//				t.printStackTrace();
-//			}
-//
-//			@Override
-//			public void onCompleted() {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			
-//			
-//		};
-//		
-//
-//		StreamObserver<futureTrafficRequest> requestObserver2 = asyncStub.futureStatus(responseObserver2);
-//
-//				try {
-//							
-//					requestObserver2.onNext(futureTrafficRequest.newBuilder().setLatitudeCur(53.2734).
-//						setLongitudeCur(-7.77832031).setLatitudeDes(44.21370930989555).setLongitudeDes(4.042968750000001).setDepartureTime(14.30).build());	
-//					Thread.sleep(500);
-//					
-//					requestObserver2.onNext(futureTrafficRequest.newBuilder().setLatitudeCur(54.2734).
-//							setLongitudeCur(-6.77832031).setLatitudeDes(45.21370930989555).setLongitudeDes(4.142968750000001).setDepartureTime(15.30).build());	
-//					Thread.sleep(500);
-//				
-//					
-//					// Mark the end of requests
-//					requestObserver2.onCompleted();
-//
-//					
-//					Thread.sleep(10000);
-//					
-//				}catch (RuntimeException e) {
-//					e.printStackTrace();
-//				} catch (InterruptedException e) {			
-//					e.printStackTrace();
-//				}
-//
-//		
-//	}
-//
-//
-//
-//	
-//	
-//	
-//	
-//	
-//	
-//
-//}
+}
