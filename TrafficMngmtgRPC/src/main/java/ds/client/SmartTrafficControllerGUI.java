@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextArea;
 
 import ds.service1.TripPlannerGrpc;
 import ds.service1.forecastTrafficStatus;
@@ -37,10 +38,17 @@ import io.grpc.stub.StreamObserver;
 
 public class SmartTrafficControllerGUI implements ActionListener{
 
-	private JTextField entry1, entry2, reply1;
-	private JTextField entry3, entry4, reply2;
-	private JTextField entry5, entry6, entry7, entry8, reply3;
-	private JTextField entry9, entry10, entry11, entry12, entry13, reply4;
+	private JTextField entry1, entry2;
+	private JTextArea reply1;
+	private JTextField entry3, entry4;
+	
+	private JTextArea reply2;
+	private JTextField entry5, entry6, entry7, entry8;
+	
+	private JTextArea reply3;
+	private JTextField entry9, entry10, entry11, entry12, entry13;
+	
+	private JTextArea reply4;
 	
 	private static 	TripPlannerGrpc.TripPlannerBlockingStub blockingStub;
 	private static TripPlannerGrpc.TripPlannerStub asyncStub ;
@@ -84,7 +92,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 		panel.add(button);
 		panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-		reply1 = new JTextField("", 10);
+		reply1 = new JTextArea();
 		reply1 .setEditable(false);
 		panel.add(reply1 );
 
@@ -124,7 +132,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 		panel.add(button);
 		panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-		reply2 = new JTextField("", 10);
+		reply2 = new JTextArea();
 		reply2 .setEditable(false);
 		panel.add(reply2 );
 
@@ -182,7 +190,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 		panel.add(button);
 		panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-		reply3 = new JTextField("", 20);
+		reply3 = new JTextArea();
 		reply3 .setEditable(false);
 		panel.add(reply3 );
 
@@ -246,7 +254,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 		panel.add(button);
 		panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-		reply4 = new JTextField("", 10);
+		reply4 = new JTextArea();
 		reply4 .setEditable(false);
 		panel.add(reply4 );
 
@@ -384,12 +392,13 @@ public class SmartTrafficControllerGUI implements ActionListener{
 
 			asyncStub = TripPlannerGrpc.newStub(channel);
 			
+			double  numLong1 = Double.parseDouble(entry5.getText());
 			
+			double numLat1 = Double.parseDouble(entry6.getText());		
 			
-			double numLat1 = 53.2734;
-			double numLong1 = -7.77832031;
-			double numLat2 = 44.21370930989555;
-			double numLong2 = 4.042968750000001;
+			double numLong2 = Double.parseDouble(entry7.getText());
+			
+			double numLat2 = Double.parseDouble(entry8.getText());	
 		
 			//preparing message to send
 			trafficRequest reqqy = trafficRequest.newBuilder().setLatitudeCur(numLat1).setLongitudeCur(numLong1).
@@ -400,6 +409,8 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			trafficStatus response2 = blockingStub.currentStatus(reqqy);
 		
 			System.out.println("Status:  " + response2.getMessage());	
+			
+			reply3.append(response2.getMessage());
 		
 			
 		
@@ -421,6 +432,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 				public void onNext(forecastTrafficStatus value) {
 					// TODO Auto-generated method stub
 					
+					reply4.append(value.getName());
 				}
 
 				@Override
@@ -442,14 +454,23 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			StreamObserver<futureTrafficRequest> requestObserver2 = asyncStub.futureStatus(responseObserver2);
 
 					try {
-								
-						requestObserver2.onNext(futureTrafficRequest.newBuilder().setLatitudeCur(53.2734).
-							setLongitudeCur(-7.77832031).setLatitudeDes(44.21370930989555).setLongitudeDes(4.042968750000001).setDepartureTime(14.30).build());	
+						
+
+						double  numLong1 = Double.parseDouble(entry9.getText());
+						
+						double numLat1 = Double.parseDouble(entry10.getText());		
+						
+						double numLong2 = Double.parseDouble(entry11.getText());
+						
+						double numLat2 = Double.parseDouble(entry12.getText());	
+					
+						double time = Double.parseDouble(entry13.getText());	
+						
+						requestObserver2.onNext(futureTrafficRequest.newBuilder().setLatitudeCur(numLat1).
+							setLongitudeCur(numLong1).setLatitudeDes(numLat2).setLongitudeDes(numLong2).setDepartureTime(time).build());	
 						Thread.sleep(500);
 						
-						requestObserver2.onNext(futureTrafficRequest.newBuilder().setLatitudeCur(54.2734).
-								setLongitudeCur(-6.77832031).setLatitudeDes(45.21370930989555).setLongitudeDes(4.142968750000001).setDepartureTime(15.30).build());	
-						Thread.sleep(500);
+					
 					
 						
 						// Mark the end of requests
@@ -476,14 +497,16 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			
 
 			
-			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
+			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
 			
 			
 			tAsyncStub = TrafficUpdatesGrpc.newStub(channel);
 			
+			double longi = Double.parseDouble(entry2.getText());
 			
+			double lat = Double.parseDouble(entry3.getText());
 			
-			currentLocation request = currentLocation.newBuilder().setLatitudeCur(53.2734).setLongitudeCur(-7.77832031).build();
+			currentLocation request = currentLocation.newBuilder().setLatitudeCur(lat).setLongitudeCur(longi).build();
 			
 			StreamObserver<trafficUpdate> responseObserver = new StreamObserver<trafficUpdate>(){
 				
@@ -494,6 +517,10 @@ public class SmartTrafficControllerGUI implements ActionListener{
 				
 					
 					System.out.println("receiving traffic update" + value.getUpdate());
+					
+					
+					reply2.append(value.getUpdate());
+				
 					count++;
 				}
 
@@ -527,10 +554,12 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			
 			System.out.println("newUser to be invoked ...");
 			
-			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
+			ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
 			
 			
 			tAsyncStub = TrafficUpdatesGrpc.newStub(channel);
+			
+			
 			
 			
 			StreamObserver<registrationStatus> responseObserver = new StreamObserver<registrationStatus>() {
@@ -538,7 +567,9 @@ public class SmartTrafficControllerGUI implements ActionListener{
 				@Override
 				public void onNext(registrationStatus value) {
 					
+					reply1.append(value.getStatus());
 					
+					//reply1.setText( String.valueOf( response.getLength()) );
 					
 				}
 
@@ -551,21 +582,29 @@ public class SmartTrafficControllerGUI implements ActionListener{
 				@Override
 				public void onCompleted() {
 					// TODO Auto-generated method stub
-					System.out.println("stream is completed ... Registration Completed");
+					
+					
+					System.out.println("Registration Completed");
+					
+					
+					
 				}
 				
 				
 				
 			};
 			
-			
+
 			StreamObserver<registration> requestObserver = tAsyncStub.newUser(responseObserver);
 			try {
-			
-				requestObserver.onNext(registration.newBuilder().setUserName("tanya007").build());
+				
+				String userName = entry1.getText();
+				
+				String emailReg = entry2.getText();
+				requestObserver.onNext(registration.newBuilder().setUserName(userName).build());
 				Thread.sleep(500);
 				
-				requestObserver.onNext(registration.newBuilder().setEmail("myemail@distributedsystems.com").build());
+				requestObserver.onNext(registration.newBuilder().setEmail(emailReg).build());
 				Thread.sleep(500);
 				
 				
@@ -581,6 +620,7 @@ public class SmartTrafficControllerGUI implements ActionListener{
 			} catch (InterruptedException e4) {			
 				e4.printStackTrace();
 			}
+			
 			
 				
 			

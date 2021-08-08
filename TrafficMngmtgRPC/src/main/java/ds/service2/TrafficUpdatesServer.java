@@ -37,7 +37,7 @@ public class TrafficUpdatesServer extends TrafficUpdatesImplBase {
 				.build()
 				.start();
 
-		System.out.println("Service-1 started, listening on " + port);
+		System.out.println("Service 2 started, listening on " + port);
 
 		server.awaitTermination();
 	
@@ -158,26 +158,38 @@ public class TrafficUpdatesServer extends TrafficUpdatesImplBase {
 				
 				String msg = "";
 				
-				String s = list.get(0);
+				String s = list.get(1);
 				
-				String e = list.get(1);
+				String e = list.get(0);
 			
-				
+				System.out.println(s);
 				char[] a = s.toCharArray();
 				
 				
 				//Username validator
 
-				for (char c: a)
+				for (int x=0; x < a.length; x++)
+					
+					
 				{
-					validUsername = ((c >= 'a') && (c <= 'z')) || 
+					
+					char c = a[x];
+					
+					if( ((c >= 'a') && (c <= 'z')) || 
 				            ((c >= 'A') && (c <= 'Z')) || 
-				            ((c >= '0') && (c <= '9'));
+				            ((c >= '0') && (c <= '9'))) {
+						
+						validUsername = true;
+						
+					}
 				    
 				 
 
-				    if (!validUsername)
+					else
 				    {
+				    	
+				    	validUsername = false;
+				    	
 				        break;
 				    }
 				}
